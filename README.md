@@ -1,5 +1,11 @@
-### Instalacion
+# Introduccion
+Esta API retorna las cotizaciones del dolar en un unico endpoint GET 
 
+/cotizaciones.php 
+
+Cuenta con una estrategia de cache para no procesar la informacion cada vez que se solicite.
+
+### Instalacion
 
 1. Clonar el repo
    ```sh
@@ -17,7 +23,7 @@
    ```sh
    docker ps
    ```
-5. Acceder al contenedor con el id
+5. Acceder a la consola del contenedor con el id
    ```sh
    docker exec -it <id> bash
    ```
@@ -25,24 +31,25 @@
    ```sh
    chmod 777 .
    ```
-
+7. Salir de la consola del contenedor
+   ```sh
+   exit
+   ```
 
 <!-- USAGE EXAMPLES -->
-## Usage
-
-Esta aplicacion retorna las cotizaciones del dolar en un unico endpoint GET /cotizaciones.php
+## Uso
 
 http://localhost:4040/cotizaciones.php
 
 ## Query params
 
 ### dolar 
-Para obtener una cotizacion en especifico, se debe enviar el query param `dolar` especificando el tipo de cambio del dolar.
+Para obtener una cotizacion en especifico, se debe enviar el query param `dolar` con el tipo de cambio seleccionado.
 
 ###### Ejemplo
 http://localhost:4040/cotizaciones.php/?dolar=blue
 
-######Opciones disponibles:
+###### Opciones disponibles:
 `oficial`
 `blue`
 `liqui`
@@ -50,11 +57,11 @@ http://localhost:4040/cotizaciones.php/?dolar=blue
 `turista`
 
 ### evolucion
-Para obtener el historico de una cotizacion en especifico, se debe enviar el query param `evolucion` en true. (Esta disponible solo para el dolar oficial)
+Para obtener el historico del dolar oficial, se debe enviar el query param `evolucion` en true. (solo para el dolar oficial)
 
 ###### Ejemplo
 http://localhost:4040/cotizaciones.php/?dolar=oficial&evolucion=true
 
-######Opciones disponibles:
+###### Opciones disponibles:
 `true`
 `false`
