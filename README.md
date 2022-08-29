@@ -1,9 +1,3 @@
-# Introduccion
-Esta API retorna las cotizaciones del dolar en un unico endpoint GET 
-
-/cotizaciones.php 
-
-Cuenta con una estrategia de cache para no procesar la informacion cada vez que se solicite.
 
 ### Instalacion
 
@@ -38,15 +32,17 @@ Cuenta con una estrategia de cache para no procesar la informacion cada vez que 
 
 <!-- USAGE EXAMPLES -->
 ## Uso
+Esta API retorna las cotizaciones del dolar en un unico endpoint GET 
 
 http://localhost:4040/cotizaciones.php
 
+Cuenta con una estrategia de cache para no procesar la informacion cada vez que se solicite.
 ## Query params
 
 ### dolar 
 Para obtener una cotizacion en especifico, se debe enviar el query param `dolar` con el tipo de cambio seleccionado.
 
-###### Ejemplo
+###### Ejemplo:
 http://localhost:4040/cotizaciones.php/?dolar=blue
 
 ###### Opciones disponibles:
@@ -59,7 +55,7 @@ http://localhost:4040/cotizaciones.php/?dolar=blue
 ### evolucion
 Para obtener el historico del dolar oficial, se debe enviar el query param `evolucion` en true. (solo para el dolar oficial)
 
-###### Ejemplo
+###### Ejemplo:
 http://localhost:4040/cotizaciones.php/?dolar=oficial&evolucion=true
 
 ###### Opciones disponibles:
