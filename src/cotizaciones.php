@@ -93,29 +93,22 @@
 
   if($_SERVER['REQUEST_METHOD'] == 'GET') {
     $baseUrl = 'https://api-dolar-argentina.herokuapp.com/api';
-
-
     $dolar = $_GET['dolar']??false;
     $evolucion = $_GET['evolucion']??false;
 
     $cacheFile = 'temp.json';
-
     if(!$dolar && $evolucion){
       return print 'The quote cannot be obtained if the type of dollar is not specified';
     }
-
     $cacheContent = getCacheIfExists($cacheFile, $dolar);
     if($cacheContent) {
       return print $cacheContent;
     }
-
     $CotizacionesUrls = getCotizacionesUrl($baseUrl, $dolar, $evolucion);
 
     foreach($CotizacionesUrls as $url){
         $response[] = getDataAPI($url);
     }
-    
-
     if(!$dolar){
       //No almacena en cache si se especifica el tipo de dolar
       writeResponseInCache($cacheFile, json_encode($response));
