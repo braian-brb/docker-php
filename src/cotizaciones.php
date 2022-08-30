@@ -12,7 +12,7 @@
     $dollar = isset($_GET['dolar']) && in_array($_GET['dolar'], $dollarPosiblesValues) ? $_GET['dolar'] : false;
     $evolution = in_array($_GET['evolucion'], $evolutionPosiblesValues) ? filter_var($_GET['evolucion'], FILTER_VALIDATE_BOOL) : false;
     if( !$dollar && $evolution ){
-      return print 'The quote cannot be obtained if the type of dollar is not specified';
+      return print 'The price history cannot be obtained if the official dollar is not selected';
     }
 
     $cacheTimeInSeconds = 30;
