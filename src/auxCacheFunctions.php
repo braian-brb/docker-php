@@ -37,13 +37,13 @@ function deleteAllCacheFilesIfExpiredTime( $cacheTimeInSeconds ){
   }
 }
 
-function getCacheFileName( $dolar, $evolucion ){
-  if( !$dolar ){
+function getCacheFileName( $dollar, $evolution ){
+  if( !$dollar ){
     $cacheFile = "cotizaciones.temp.json";
-  } else if ( $dolar && !$evolucion ){
-    $cacheFile = "{$dolar}.temp.json";
-  } else if ( $dolar == 'oficial' && $evolucion ){
-    $cacheFile = "{$dolar}-evolucion.temp.json";
+  } else if ( $dollar && !$evolution ){
+    $cacheFile = "{$dollar}.temp.json";
+  } else if ( $dollar == 'oficial' && $evolution ){
+    $cacheFile = "{$dollar}-evolucion.temp.json";
   }
   return $cacheFile;
 }

@@ -6,24 +6,24 @@
 
   if( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
     $baseUrl = 'https://api-dolar-argentina.herokuapp.com/api';
-    $dolarPosiblesValues = array( "oficial", "blue", "liqui", "promedio", "turista" );
-    $evolucionPosiblesValues = array( true, false );
+    $dollarPosiblesValues = array( "oficial", "blue", "liqui", "promedio", "turista" );
+    $evolutionPosiblesValues = array( true, false );
 
-    $dolar = isset($_GET['dolar']) && in_array($_GET['dolar'], $dolarPosiblesValues) ? $_GET['dolar'] : false;
-    $evolucion = in_array($_GET['evolucion'], $evolucionPosiblesValues) ? filter_var($_GET['evolucion'], FILTER_VALIDATE_BOOL) : false;
-    if( !$dolar && $evolucion ){
+    $dollar = isset($_GET['dolar']) && in_array($_GET['dolar'], $dollarPosiblesValues) ? $_GET['dolar'] : false;
+    $evolution = in_array($_GET['evolucion'], $evolutionPosiblesValues) ? filter_var($_GET['evolucion'], FILTER_VALIDATE_BOOL) : false;
+    if( !$dollar && $evolution ){
       return print 'The quote cannot be obtained if the type of dollar is not specified';
     }
 
     $cacheTimeInSeconds = 30;
-    $cacheFile = getCacheFileName( $dolar, $evolucion );
+    $cacheFile = getCacheFileName( $dollar, $evolution );
     $cacheContent = getContentCache( $cacheFile, $cacheTimeInSeconds );
     if( $cacheContent ) {
       return print $cacheContent;
     }
     deleteAllCacheFilesIfExpiredTime( $cacheTimeInSeconds );
 
-    $cotizacionesUrls = getCotizacionesUrl( $baseUrl, $dolar, $evolucion );
+    $cotizacionesUrls = getCotizacionesUrl( $baseUrl, $dollar, $evolution );
     foreach( $cotizacionesUrls as $url ){
         $response[] = getDataAPI( $url );
     }
@@ -31,7 +31,7 @@
 
     return print json_encode( $response, false );
   } else {
-      return print 'Invalid Request';
+      return print 'Invalid Request, please use GET method';
   }
 
   function getDataAPI( $url ) {

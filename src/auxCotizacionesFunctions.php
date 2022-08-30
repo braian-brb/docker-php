@@ -1,7 +1,7 @@
 <?php
 
-function getCotizacionesUrl( $baseUrl, $dolar, $evolucion ){
-  if( !$dolar  && !$evolucion ){
+function getCotizacionesUrl( $baseUrl, $dollar, $evolution ){
+  if( !$dollar  && !$evolution ){
     $CotizacionesUrls = [
       "{$baseUrl}/dolaroficial",
       "{$baseUrl}/dolarblue",
@@ -12,11 +12,11 @@ function getCotizacionesUrl( $baseUrl, $dolar, $evolucion ){
     ];
   } 
 
-  if( $evolucion && $dolar == 'oficial' ){
+  if( $evolution && $dollar == 'oficial' ){
     $CotizacionesUrls[] = "{$baseUrl}/evolucion/dolaroficial";
   }
 
-  switch( $dolar ){
+  switch( $dollar ){
     case 'oficial':
       $CotizacionesUrls[] = "{$baseUrl}/dolaroficial";
       break;
